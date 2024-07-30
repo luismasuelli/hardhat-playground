@@ -1,6 +1,14 @@
 # New Hardhat Project
 A hardhat projects boilerplate. Meant to be used as a template.
 
+# Installation
+Prior to doing anything, install everything:
+
+```shell
+npm install
+```
+
+
 # Project contents
 This project comes with many pre-installed dependencies:
 
