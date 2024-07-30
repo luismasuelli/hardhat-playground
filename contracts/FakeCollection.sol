@@ -5,14 +5,10 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 
 /**
- * This is a non-fungible token contract which is related
- * to an owner.
- *
- * Feel free to edit these notes accordingly, but after
- * reading these notes first:
- *
- * Your contract should define a way to mint tokens, and
- * optionally a way to burn tokens.
+ * This is a non-fungible token contract which mints 5 tokens
+ * to the creator of this contract. The URLs map to localhost
+ * (port 8081), which can (and should) be deployed in this
+ * project.
  */
 contract FakeCollection is ERC721 {
     /**
@@ -39,8 +35,9 @@ contract FakeCollection is ERC721 {
     mapping(uint256 => TokenMetadata) private metadata;
 
     /**
-     * Feel free to setup your ERC721 name and symbol as you please
-     * if you change your mind.
+     * Mints 5 tokens for the creator of this contract.
+     * The image paths are hardcoded and can / should
+     * be launched inside of this project.
      */
     constructor() ERC721("Fake Collection", "FAKE") {
         _safeMint(msg.sender, 1);
@@ -54,19 +51,6 @@ contract FakeCollection is ERC721 {
         _safeMint(msg.sender, 5);
         metadata[5] = TokenMetadata({name: "Token Five", description: "The 5th token", image: "http://localhost:8081/fake-collection/images/token5.png"});
     }
-
-    /**
-     * Implement your own logic to mint tokens by invoking _safeMint
-     * at some point inside one of your methods. The invocation must
-     * be like one of these:
-     *     _safeMint(account, tokenId)
-     *     _safeMint(account, tokenId, "someBinaryData")
-     *
-     * Also, you can implement your own logic to burn those tokens.
-     * The syntax is like: _burn(account, tokenId).
-     *
-     * Don't allow those operations without prior clear rules.
-     */
 
     /**
      * Retrieves the metadata of the token.
