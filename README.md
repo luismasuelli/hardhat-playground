@@ -31,3 +31,30 @@ In order to understand the plug-ins, properly read the documentations:
 
 You can get an understanding by reading [this tutorial](https://medium.com/@luismasuelli/the-easy-way-to-hardhat-introduction-a21d734fdaba).
 Each of the parts 2 to 8 document one of these (new) packages.
+
+# Usage
+
+First, mount a local node:
+
+```shell
+npx hardhat node
+```
+
+Then, deploy everything in a separate console:
+
+```shell
+npx hardhat ignition deploy-everything run --reset --network localhost
+```
+
+## Fake Tokens
+
+There are three fake token contracts already created. Examples on how to interact with them:
+
+```shell
+# These are the 3 names, deployed in a single Hardhat Ignition module, of the token contracts.
+# These instructions are only balance-of instructions, but you'll get the idea if you took a
+# look to the hardhat-method-prompts article / documentation on how to use other methods.
+npx hardhat invoke erc721:balance-of --address 0 --deployed-contract-id "PlaygroundTokens#FakeCoin" --network localhost
+npx hardhat invoke erc721:balance-of --address 0 --deployed-contract-id "PlaygroundTokens#FakeCollection" --network localhost
+npx hardhat invoke erc1155:balance-of --address 0 --token-id 1 --deployed-contract-id "PlaygroundTokens#FakeEcosystem" --network localhost
+```
